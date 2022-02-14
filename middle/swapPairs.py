@@ -9,16 +9,12 @@ class ListNode:
         return '%d -> %s' % (self.val, self.next)
 
 def swapPairs(head: Optional[ListNode]):
-    if not head:
-        return None
-    p = head
-    new = ListNode()
-    ans = new
-    while p:
-        ans.next = p.next
-        ans.next.next = p
-        p = p.next.next
-    return ans
+    if not head or not head.next:
+        return head
+    p = head.next
+    head.next = swapPairs(p.next)
+    p.next = head
+    return p
 
 
 print(swapPairs(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, None)))))))
