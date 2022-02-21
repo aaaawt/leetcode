@@ -1,8 +1,11 @@
 def rotate(matrix):
-    n = len(matrix) - 1
+    n = len(matrix)
     for i in range(n):
-        for j in range(n, -1, -1):
-            matrix + [matrix[j][i]]
+        cur = []
+        for j in range(n - 1, -1, -1):
+            cur.append(matrix[j][i])
+        matrix.extend([cur])
+    del matrix[:n]
 
 
 print(rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
