@@ -2,12 +2,10 @@ def simplifyPath(path):
     list_path = path.split('/')
     stack = []
     for x in list_path:
-        if x == '' or x == '.':
-            continue
-        elif x == '..':
+        if x == '..':
             if stack:
                 stack.pop()
-        else:
+        elif x and x != '.':
             stack.append(x)
     return '/' + '/'.join(stack)
 
